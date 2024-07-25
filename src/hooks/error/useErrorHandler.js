@@ -22,7 +22,7 @@ import { logErrorToService } from "../../services/errorLoggingService";
 const useErrorHandler = () => {
   return useCallback((error, info) => {
     // Log the error to an external service
-     logErrorToService(error, info);
+    logErrorToService(error, info);
 
     // Optionally, handle the error locally (e.g., show an error message)
     console.error("An error occurred:", error, info);

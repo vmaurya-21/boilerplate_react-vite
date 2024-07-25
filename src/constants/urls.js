@@ -25,10 +25,10 @@ export const endpoints = {
   REGISTER_API: BASE_URL + "/auth/register",
   LOGIN_API: BASE_URL + "/auth/login",
   LOGOUT_API: BASE_URL + "/auth/logout",
-  
+
   // Error API endpoints
   ERROR_API: BASE_URL + "/error",
-  
+
   // Token endpoints
   REFRESH_TOKEN_API: BASE_URL + "/refresh",
 };

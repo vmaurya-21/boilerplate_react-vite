@@ -1,4 +1,3 @@
-
 /**
  * ProtectedPage Component
  *

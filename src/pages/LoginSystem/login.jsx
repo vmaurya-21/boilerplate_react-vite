@@ -25,7 +25,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const redirection = location.state?.from?.pathname || "/"; // Redirect user to previous page after login
-  
+
   const usernameOrEmailRef = useRef(); // Ref for username/email input field
   const errRef = useRef(); // Ref for error message element
 
@@ -66,24 +66,22 @@ const Login = () => {
         }
       );
 
-  //  Handle invalid response from server
-    if (!response.data) {
-      throw new Error("Invalid response from server");
-    }
+      //  Handle invalid response from server
+      if (!response.data) {
+        throw new Error("Invalid response from server");
+      }
 
+      // Destructure response data
+      const { accessToken, username, email } = response.data;
 
-    // Destructure response data
-     const { accessToken, username, email } = response.data;
-      
+      // Update authentication context with user information
+      setAuth({ username, email, accessToken });
 
-    // Update authentication context with user information
-    setAuth({ username, email, accessToken });
+      // Clear username/email and password fields
+      setUsernameOrEmail("");
+      setPassword("");
 
-    // Clear username/email and password fields
-    setUsernameOrEmail("");
-    setPassword("");
-
-    // Redirect user to previous page or home ("/") after successful login
+      // Redirect user to previous page or home ("/") after successful login
       navigate(redirection, { replace: true });
     } catch (err) {
       // Handle errors
@@ -95,14 +93,14 @@ const Login = () => {
         setErrMsg("Login failed."); // Other login failure
       }
 
-    // Clear error message after 4 seconds
-    setTimeout(() => {
-      setErrMsg("");
-    }, 4000);
+      // Clear error message after 4 seconds
+      setTimeout(() => {
+        setErrMsg("");
+      }, 4000);
 
-    // Focus on error message
-    errRef.current.focus();
-   }
+      // Focus on error message
+      errRef.current.focus();
+    }
   };
 
   /**

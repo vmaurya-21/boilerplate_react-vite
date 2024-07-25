@@ -1,9 +1,9 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/auth/useAuth";
-import  Error  from "../pages/Error/index";
+import Error from "../pages/Error/index";
 import useLogout from "../hooks/auth/useLogout";
 import { jwtDecode } from "jwt-decode";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Component to require authentication based on allowed roles.
@@ -30,10 +30,10 @@ export const RequireAuth = ({ allowedRoles }) => {
     if (auth?.accessToken) {
       try {
         const decoded = jwtDecode(auth.accessToken);
-        setRoles(decoded?.Role || '');
+        setRoles(decoded?.Role || "");
       } catch (error) {
-        console.error('JWT decode error:', error);
-        setRoles('');
+        console.error("JWT decode error:", error);
+        setRoles("");
       }
     } else {
       logout();

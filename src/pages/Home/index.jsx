@@ -20,7 +20,7 @@ const Home = () => {
     <>
       <div className="text-center text-2xl">Hello world..</div>;
     </>
-  )
+  );
 };
 
 export default Home;
